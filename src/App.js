@@ -6,11 +6,13 @@ import AddStudent from "./Pages/AddStudent/AddStudent";
 import StudentsTable from "./Pages/StudentsTable/StudentsTable";
 import DistributeFood from "./Pages/DistributeFood/DistributeFood/DistributeFood";
 import NotFound from "./Pages/NotFound/NotFound";
+import Navigation from "./Pages/Shared/Navigation/Navigation";
 
 function App() {
     return (
         <div className="App">
             <Router>
+                <Navigation></Navigation>
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="home" element={<Home />} />
