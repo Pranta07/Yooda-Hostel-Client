@@ -1,7 +1,7 @@
 import React from "react";
 import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
-import { BellIcon, MenuIcon, XIcon } from "@heroicons/react/outline";
+import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import { Link } from "react-router-dom";
 
 const navigation = [
@@ -31,14 +31,16 @@ const Navigation = () => {
                             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                                 <div className="flex items-center justify-between h-16">
                                     <div className="flex items-center">
-                                        <div className="flex items-center">
-                                            <span className="text-yellow-400 font-semibold tracking-wider pr-2">
-                                                Yooda
+                                        <div className="flex items-center gap-3">
+                                            <span class="before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-pink-500 relative inline-block">
+                                                <span class="relative text-white">
+                                                    Yooda
+                                                </span>
                                             </span>
                                             <img
                                                 className="h-8 w-8"
                                                 src="https://i.ibb.co/5sZXCKx/hostel-dribbble-4x.jpg"
-                                                alt="Workflow"
+                                                alt="brand"
                                             />
                                         </div>
                                         <div className="hidden md:block">
