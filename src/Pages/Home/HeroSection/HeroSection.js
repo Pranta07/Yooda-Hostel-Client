@@ -5,7 +5,7 @@ const HeroSection = () => {
     return (
         <div className="hero">
             <div className="hero-content container">
-                <div className="h-screen grid grid-cols-2 items-center">
+                <div className="h-screen grid grid-cols-1 md:grid-cols-2 md:gap-5 items-center">
                     <div>
                         <h1 className="text-4xl">
                             <span class="before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-pink-500 relative inline-block">
@@ -21,7 +21,7 @@ const HeroSection = () => {
                         <img
                             src="https://i.ibb.co/8sPx9qD/A-meal-plan-for-a-week-on-a-white-table-among-products-for-cooking-pastas-basil-vegetables-lime-seed.jpg"
                             alt=""
-                            className="w-100 rounded-lg"
+                            className="w-5/6 md:w-4/5 lg:w-5/6 xl:w-full rounded-lg shadow-2xl"
                         />
                     </div>
                 </div>

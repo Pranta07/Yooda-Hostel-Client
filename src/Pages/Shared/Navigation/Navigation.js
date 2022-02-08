@@ -37,11 +37,9 @@ const Navigation = () => {
                                                     Yooda
                                                 </span>
                                             </span>
-                                            <img
-                                                className="h-8 w-8"
-                                                src="https://i.ibb.co/5sZXCKx/hostel-dribbble-4x.jpg"
-                                                alt="brand"
-                                            />
+                                            <span className="text-white">
+                                                Hostel
+                                            </span>
                                         </div>
                                         <div className="hidden md:block">
                                             <div className="ml-10 flex items-baseline space-x-4">
