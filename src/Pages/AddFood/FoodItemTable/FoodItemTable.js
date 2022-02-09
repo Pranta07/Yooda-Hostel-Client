@@ -1,14 +1,14 @@
 import React from "react";
 import SingleItem from "../SingleItem/SingleItem";
 
-const FoodItemTable = ({ foods }) => {
+const FoodItemTable = ({ foods, setIsUpdated }) => {
     return (
         <div className="flex flex-col overflow-x-scroll">
             <div className="mx-2">
                 <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
                     <div className="">
                         <table className="min-w-full">
-                            <thead className="bg-white border-2 border-gray-900">
+                            <thead className="bg-gray-100 border border-gray-900">
                                 <tr>
                                     <th
                                         scope="col"
@@ -41,6 +41,7 @@ const FoodItemTable = ({ foods }) => {
                                     <SingleItem
                                         key={item._id}
                                         item={item}
+                                        setIsUpdated={setIsUpdated}
                                     ></SingleItem>
                                 ))}
                             </tbody>
