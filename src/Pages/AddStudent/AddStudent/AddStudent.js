@@ -147,7 +147,7 @@ const AddStudent = () => {
                                                     {...register("status", {
                                                         required: true,
                                                     })}
-                                                    className="mt-1 block w-full py-2 px-3 border bg-gray-100 focus:outline-pink-500 rounded-md shadow-sm sm:text-sm"
+                                                    className="mt-1 block w-full py-2 px-3 bg-gray-100 border rounded-md shadow-sm sm:text-sm"
                                                 >
                                                     <option value="active">
                                                         Active

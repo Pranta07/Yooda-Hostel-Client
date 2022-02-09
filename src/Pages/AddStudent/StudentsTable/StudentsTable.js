@@ -1,5 +1,5 @@
 import { Menu, Transition } from "@headlessui/react";
-import { DotsVerticalIcon } from "@heroicons/react/outline";
+import { CheckIcon, DotsVerticalIcon } from "@heroicons/react/outline";
 import React, { Fragment, useState } from "react";
 import SingleStudent from "../SingleStudent/SingleStudent";
 
@@ -7,17 +7,40 @@ const StudentsTable = ({ students, setIsUpdated, setIsDeleted }) => {
     const [selectedItems, setSelectedItems] = useState([]);
 
     const handleStatus = (status) => {
-        // console.log(status);
+        // console.log(selectedItems);
+        setIsUpdated(false);
+        fetch(`http://localhost:5000/students/update/${status}`, {
+            method: "PUT",
+            headers: {
+                "content-type": "application/json",
+            },
+            body: JSON.stringify(selectedItems),
+        })
+            .then((res) => res.json())
+            .then((result) => {
+                if (result.modifiedCount > 0) {
+                    alert("Status Updated Successfully!");
+                    setIsUpdated(true);
+                } else {
+                    alert("Try Again!");
+                }
+            });
     };
 
     return (
         <>
             <div className="hidden md:block">
-                <div className="w-1/2 mx-auto rounded p-2 bg-green-200 text-black font-semibold tracking-widest">
-                    <span className="text-sm">
-                        {selectedItems.length} items selected.
-                    </span>
+                <div
+                    className={selectedItems.length === 0 ? "hidden" : "block"}
+                >
+                    <div className="w-1/2 mx-auto rounded p-2 bg-green-200 text-black font-semibold tracking-widest">
+                        <CheckIcon className="inline h-5 w-5 pr-1"></CheckIcon>
+                        <span className="text-sm">
+                            {selectedItems.length} items selected.
+                        </span>
+                    </div>
                 </div>
+
                 <div className="ml-4 flex justify-end items-center md:ml-6">
                     <Menu as="div" className="ml-3 relative">
                         <div className="flex items-center mr-9 mb-2">
@@ -128,6 +151,7 @@ const StudentsTable = ({ students, setIsUpdated, setIsDeleted }) => {
                                             student={student}
                                             setIsUpdated={setIsUpdated}
                                             setIsDeleted={setIsDeleted}
+                                            selectedItems={selectedItems}
                                             setSelectedItems={setSelectedItems}
                                         ></SingleStudent>
                                     ))}

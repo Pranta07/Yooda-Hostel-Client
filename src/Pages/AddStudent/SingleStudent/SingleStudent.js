@@ -3,20 +3,37 @@ import { PencilAltIcon, TrashIcon } from "@heroicons/react/outline";
 import StudentEditModal from "../StudentEditModal/StudentEditModal";
 import DeleteModal from "../../AddFood/DeleteModal/DeleteModal";
 
-const SingleStudent = ({ student, setIsUpdated, setIsDeleted }) => {
+const SingleStudent = ({
+    student,
+    setIsUpdated,
+    setIsDeleted,
+    selectedItems,
+    setSelectedItems,
+}) => {
     const [open, setOpen] = useState(false);
     const [dmopen, setDmOpen] = useState(false);
     const { fullName, roll, age, hall, status } = student;
 
-    const handleSelect = () => {
-        console.log(student.roll);
+    const handleSelect = (e) => {
+        // console.log(checked);
+        const checked = e.target.checked;
+        if (checked) {
+            setSelectedItems([...selectedItems, student._id]);
+        } else {
+            setSelectedItems(selectedItems.filter((id) => id !== student._id));
+        }
     };
 
     return (
         <>
             <tr className="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100 text-left">
                 <td className="ml-2 px-6 py-4">
-                    <input type="checkbox" onSelect={handleSelect} />
+                    <input
+                        value={student._id}
+                        onClick={handleSelect}
+                        type="checkbox"
+                        className="checked:bg-pink-400 focus:ring-pink-400 h-4 w-4 text-pink-400 border-gray-300 rounded"
+                    />
                 </td>
                 <td className="text-sm font-semibold tracking-wider ml-2 text-gray-900 px-6 py-4 whitespace-nowrap">
                     {fullName}
@@ -34,7 +51,15 @@ const SingleStudent = ({ student, setIsUpdated, setIsDeleted }) => {
                     {hall}
                 </td>
                 <td className="text-sm font-semibold tracking-wider ml-2 text-gray-900 px-6 py-4 whitespace-nowrap">
-                    {status}
+                    <span
+                        className={
+                            status === "active"
+                                ? "p-2 rounded-xl bg-green-200"
+                                : "p-2 rounded-xl bg-gray-200"
+                        }
+                    >
+                        {status}
+                    </span>
                 </td>
                 <td
                     onClick={() => setOpen(true)}
