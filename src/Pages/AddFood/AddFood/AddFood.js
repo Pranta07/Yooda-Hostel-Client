@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { ExclamationCircleIcon } from "@heroicons/react/outline";
+import FoodItemTable from "../FoodItemTable/FoodItemTable";
 
 const AddFood = () => {
+    const [foodItems, setFoodItems] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [isAdded, setIsAdded] = useState(false);
+
     const {
         register,
         handleSubmit,
@@ -12,6 +17,7 @@ const AddFood = () => {
 
     const onSubmit = (data) => {
         // console.log(data);
+        setIsAdded(false);
         fetch("http://localhost:5000/addFood", {
             method: "POST",
             headers: {
@@ -23,12 +29,23 @@ const AddFood = () => {
             .then((result) => {
                 if (result.insertedId) {
                     alert("Food Item Added!");
+                    setIsAdded(true);
                     reset();
                 } else {
                     alert("Try Again! Something Went Wrong!");
                 }
             });
     };
+
+    useEffect(() => {
+        setLoading(true);
+        fetch(`http://localhost:5000/foods`)
+            .then((res) => res.json())
+            .then((data) => {
+                setLoading(false);
+                setFoodItems(data.foods);
+            });
+    }, [isAdded]);
 
     return (
         <div className="container mx-auto text-left grid grid-cols-1 lg:grid-cols-2 gap-4">
@@ -77,7 +94,7 @@ const AddFood = () => {
                                     type="submit"
                                     className="uppercase bg-pink-500 text-white tracking-wider px-8 py-3 my-4 hover:bg-gray-900 cursor-pointer"
                                 >
-                                    Place Order
+                                    Add Item
                                 </button>
                             </div>
                         </form>
@@ -89,6 +106,14 @@ const AddFood = () => {
                 <h1 className="uppercase tracking-widest text-3xl my-8 pb-2 border-b-4 border-gray-900">
                     Available Food Items
                 </h1>
+                {loading ? (
+                    <svg
+                        class="animate-spin h-5 w-5 bg-pink-500 mx-auto"
+                        viewBox="0 0 24 24"
+                    ></svg>
+                ) : (
+                    <FoodItemTable foods={foodItems}></FoodItemTable>
+                )}
             </div>
         </div>
     );
