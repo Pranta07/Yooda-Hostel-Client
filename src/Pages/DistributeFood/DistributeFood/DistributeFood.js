@@ -8,11 +8,13 @@ const DistributeFood = () => {
     const [loading, setLoading] = useState(false);
 
     const handleSearch = () => {
-        setLoading(true);
-        fetch(`http://localhost:5000/student/${roll}`)
-            .then((res) => res.json())
-            .then((data) => setStudent(data))
-            .finally(() => setLoading(false));
+        if (roll) {
+            setLoading(true);
+            fetch(`http://localhost:5000/student/${roll}`)
+                .then((res) => res.json())
+                .then((data) => setStudent(data))
+                .finally(() => setLoading(false));
+        }
     };
 
     return (
