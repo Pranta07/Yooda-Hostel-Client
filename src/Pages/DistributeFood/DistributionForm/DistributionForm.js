@@ -24,7 +24,7 @@ const DistributionForm = ({ roll }) => {
                         alert("Served Foods Successfully!");
                         reset();
                     } else {
-                        alert("Already Served!");
+                        alert(result.msg);
                     }
                 });
         } else {

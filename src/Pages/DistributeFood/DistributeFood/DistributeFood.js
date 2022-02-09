@@ -13,7 +13,9 @@ const DistributeFood = () => {
             setLoading(true);
             fetch(`http://localhost:5000/student/${roll}`)
                 .then((res) => res.json())
-                .then((data) => setStudent(data))
+                .then((data) => {
+                    setStudent(data);
+                })
                 .finally(() => setLoading(false));
         }
     };
