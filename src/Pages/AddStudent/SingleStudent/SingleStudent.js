@@ -29,7 +29,6 @@ const SingleStudent = ({
             <tr className="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100 text-left">
                 <td className="ml-2 px-6 py-4">
                     <input
-                        value={student._id}
                         onClick={handleSelect}
                         type="checkbox"
                         className="checked:bg-pink-400 focus:ring-pink-400 h-4 w-4 text-pink-400 border-gray-300 rounded"

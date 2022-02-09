@@ -45,7 +45,7 @@ const AddStudent = () => {
 
     return (
         <>
-            <div className="container mx-auto text-left grid grid-cols-1 gap-4 w-1/2">
+            <div className="container mx-auto text-left grid grid-cols-1 gap-4 lg:w-2/3 xl:w-1/2">
                 <div>
                     <h1 className="uppercase tracking-widest text-3xl m-5 md:m-8 pb-2 border-b-4 border-gray-900">
                         Add New Student
@@ -86,7 +86,7 @@ const AddStudent = () => {
                                                 />
                                             </div>
 
-                                            <div className="col-span-6 sm:col-span-6 lg:col-span-2">
+                                            <div className="col-span-6 sm:col-span-6 md:col-span-2 lg:col-span-2">
                                                 <label className="block text-sm font-medium text-gray-700">
                                                     Age{" "}
                                                     <span className="text-red-600">
@@ -101,7 +101,7 @@ const AddStudent = () => {
                                                 />
                                             </div>
 
-                                            <div className="col-span-6 sm:col-span-3 lg:col-span-2">
+                                            <div className="col-span-6 sm:col-span-3 md:col-span-2 lg:col-span-2">
                                                 <label className="block text-sm font-medium text-gray-700">
                                                     Class{" "}
                                                     <span className="text-red-600">
@@ -117,7 +117,7 @@ const AddStudent = () => {
                                                 />
                                             </div>
 
-                                            <div className="col-span-6 sm:col-span-3 lg:col-span-2">
+                                            <div className="col-span-6 sm:col-span-3 md:col-span-2 lg:col-span-2">
                                                 <label className="block text-sm font-medium text-gray-700">
                                                     Hall Name{" "}
                                                     <span className="text-red-600">

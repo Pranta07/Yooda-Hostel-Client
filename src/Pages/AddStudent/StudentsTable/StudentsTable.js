@@ -29,11 +29,11 @@ const StudentsTable = ({ students, setIsUpdated, setIsDeleted }) => {
 
     return (
         <>
-            <div className="hidden md:block">
+            <div className="block">
                 <div
                     className={selectedItems.length === 0 ? "hidden" : "block"}
                 >
-                    <div className="w-1/2 mx-auto rounded p-2 bg-green-200 text-black font-semibold tracking-widest">
+                    <div className="w-1/2 md:mx-auto rounded p-2 bg-green-200 text-black font-semibold tracking-widest">
                         <CheckIcon className="inline h-5 w-5 pr-1"></CheckIcon>
                         <span className="text-sm">
                             {selectedItems.length} items selected.
@@ -43,7 +43,7 @@ const StudentsTable = ({ students, setIsUpdated, setIsDeleted }) => {
 
                 <div className="ml-4 flex justify-end items-center md:ml-6">
                     <Menu as="div" className="ml-3 relative">
-                        <div className="flex items-center mr-9 mb-2">
+                        <div className="flex items-center md:mr-2 lg:mr-9 mb-2">
                             <span className="text-sm pr-3 font-semibold tracking-widest">
                                 Update Status
                             </span>
