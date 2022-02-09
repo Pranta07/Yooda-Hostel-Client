@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
 
-const AvailableFoods = () => {
+const AvailableFoods = ({ selectedItems, setSelectedItems }) => {
     const [foodItems, setFoodItems] = useState([]);
-    const { register } = useForm();
 
     useEffect(() => {
         fetch(`http://localhost:5000/allFoods`)
@@ -13,18 +11,25 @@ const AvailableFoods = () => {
             });
     }, []);
 
+    const handleSelect = (e, id) => {
+        const checked = e.target.checked;
+        // console.log(checked);
+        if (checked) {
+            setSelectedItems([...selectedItems, id]);
+        } else {
+            setSelectedItems(selectedItems.filter((fid) => fid !== id));
+        }
+    };
+
     return (
         <div className="flex flex-wrap">
             {foodItems.map((item) => (
                 <div key={item._id} className="flex items-center m-1">
                     <input
-                        id={item._id}
-                        name="rice"
+                        onClick={(e) => handleSelect(e, item._id)}
                         type="checkbox"
-                        {...register("rice", {
-                            required: true,
-                        })}
-                        className="rounded-sm"
+                        id={item._id}
+                        className="checked:bg-pink-400 focus:ring-pink-400 h-4 w-4 text-pink-400 border-gray-300 rounded"
                     />
 
                     <label htmlFor={item._id} className="mx-1">

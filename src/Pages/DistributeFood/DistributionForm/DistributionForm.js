@@ -1,19 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import AvailableFoods from "../AvailableFoods/AvailableFoods";
 
 const DistributionForm = ({ roll }) => {
+    const [selectedItems, setSelectedItems] = useState([]);
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = (data) => {
-        data.studentId = roll;
-        console.log(data);
+        if (roll) {
+            data.studentId = roll;
+            data.items = selectedItems;
+            console.log(data);
+        } else {
+            alert("Search for a valid student id!");
+        }
     };
 
     return (
         <div className="mx-10 my-5 text-left">
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="shadow-lg overflow-hidden sm:rounded-md">
-                    <div className="px-4 py-5 bg-white sm:p-6">
+                    <div className="px-4 py-5 bg-gray-50 sm:p-6">
                         <div className="grid grid-cols-6 gap-6">
                             <div className="col-span-6 sm:col-span-3">
                                 <label className="block text-sm font-medium text-gray-700">
@@ -40,7 +46,7 @@ const DistributionForm = ({ roll }) => {
                                     {...register("date", {
                                         required: true,
                                     })}
-                                    className="mt-1 p-2 border bg-gray-100 focus:outline-pink-500 block w-full shadow-md sm:text-sm rounded-md"
+                                    className="mt-1 p-2 border bg-gray-100 block w-full shadow-md sm:text-sm rounded-md"
                                 />
                             </div>
 
@@ -49,7 +55,10 @@ const DistributionForm = ({ roll }) => {
                                     Add Food Items{" "}
                                     <span className="text-red-600">*</span>
                                 </label>
-                                <AvailableFoods></AvailableFoods>
+                                <AvailableFoods
+                                    selectedItems={selectedItems}
+                                    setSelectedItems={setSelectedItems}
+                                ></AvailableFoods>
                             </div>
                         </div>
                     </div>
