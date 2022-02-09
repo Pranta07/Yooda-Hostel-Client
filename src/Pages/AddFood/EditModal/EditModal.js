@@ -1,4 +1,4 @@
-import React, { Fragment, useRef, useState } from "react";
+import React, { Fragment, useRef } from "react";
 import { PencilIcon } from "@heroicons/react/outline";
 import { Dialog, Transition } from "@headlessui/react";
 import { useForm } from "react-hook-form";
@@ -87,11 +87,10 @@ const EditModal = ({ setIsUpdated, item, open, setOpen }) => {
                                         </Dialog.Title>
                                         <div className="mt-2">
                                             <p className="text-sm text-gray-500">
-                                                Are you sure you want to
-                                                deactivate your account? All of
-                                                your data will be permanently
-                                                removed. This action cannot be
-                                                undone.
+                                                Are you sure you want to edit
+                                                this item infromation? Don't
+                                                worry! Item information can be
+                                                updated as many times you want!
                                             </p>
                                             <form
                                                 onSubmit={handleSubmit(
