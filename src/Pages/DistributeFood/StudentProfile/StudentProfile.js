@@ -1,6 +1,6 @@
 import React from "react";
 
-const StudentProfile = ({ student, loading }) => {
+const StudentProfile = ({ student }) => {
     const { fullName, roll, age, hall, status } = student;
 
     return (
@@ -11,9 +11,9 @@ const StudentProfile = ({ student, loading }) => {
 
             <div className="relative mx-10 mt-4 shadow-md p-10 bg-gray-100 rounded-lg">
                 {status === "active" && (
-                    <span class="flex h-3 w-3">
-                        <span class="animate-ping absolute inline-flex h-3 w-3 top-0 right-0 rounded-full bg-sky-400 opacity-75"></span>
-                        <span class="absolute inline-flex rounded-full h-3 w-3 top-0 right-0 bg-sky-500"></span>
+                    <span className="flex h-4 w-4">
+                        <span className="animate-ping absolute inline-flex h-4 w-4 top-0 right-0 rounded-full bg-green-300 opacity-75"></span>
+                        <span className="absolute inline-flex rounded-full h-4 w-4 top-0 right-0 bg-green-400"></span>
                     </span>
                 )}
                 <p className="font-semibold tracking-widest p-2 bg-pink-200 mb-2 rounded-md">

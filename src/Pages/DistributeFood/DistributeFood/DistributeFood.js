@@ -4,8 +4,8 @@ import StudentProfile from "../StudentProfile/StudentProfile";
 
 const DistributeFood = () => {
     const [roll, setRoll] = useState("");
-    const [student, setStudent] = useState({});
-    const [loading, setLoading] = useState(true);
+    const [student, setStudent] = useState(null);
+    const [loading, setLoading] = useState(false);
 
     const handleSearch = () => {
         setLoading(true);
@@ -21,16 +21,23 @@ const DistributeFood = () => {
                 Distribute Food to Students
             </h1>
             <div className="grid grid-cols-2 gap-4">
-                <SearchStudent
-                    setRoll={setRoll}
-                    handleSearch={handleSearch}
-                ></SearchStudent>
-                {!loading && (
+                <div>
+                    <SearchStudent
+                        setRoll={setRoll}
+                        handleSearch={handleSearch}
+                    ></SearchStudent>
+                </div>
+                {!student && !loading && (
+                    <p className="text-md font-semibold tracking-widest">
+                        No Results Found!
+                    </p>
+                )}
+                {!loading && student && (
                     <StudentProfile student={student}></StudentProfile>
                 )}
                 {loading && (
                     <svg
-                        class="animate-spin h-5 w-5 bg-pink-300 mx-auto"
+                        className="animate-spin h-5 w-5 bg-pink-300 mx-auto"
                         viewBox="0 0 24 24"
                     ></svg>
                 )}
