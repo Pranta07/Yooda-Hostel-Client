@@ -3,18 +3,17 @@ import { PencilIcon } from "@heroicons/react/outline";
 import { Dialog, Transition } from "@headlessui/react";
 import { useForm } from "react-hook-form";
 
-const StudentEditModal = ({ setIsUpdated, item, open, setOpen }) => {
-    const { foodName, price } = item;
+const StudentEditModal = ({ setIsUpdated, student, open, setOpen }) => {
     const cancelButtonRef = useRef(null);
 
     const { register, handleSubmit, reset } = useForm({
-        defaultValues: { foodName, price },
+        defaultValues: student,
     });
 
     const onSubmit = (data) => {
         setIsUpdated(false);
         setOpen(false);
-        fetch(`http://localhost:5000/editStudent/${item._id}`, {
+        fetch(`http://localhost:5000/editStudent/${student._id}`, {
             method: "POST",
             headers: {
                 "content-type": "application/json",

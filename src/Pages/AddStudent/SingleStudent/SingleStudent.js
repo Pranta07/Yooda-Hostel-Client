@@ -1,21 +1,33 @@
 import React, { useState } from "react";
 import { PencilAltIcon, TrashIcon } from "@heroicons/react/outline";
-import DeleteModal from "../DeleteModal/DeleteModal";
 import StudentEditModal from "../StudentEditModal/StudentEditModal";
+import DeleteModal from "../../AddFood/DeleteModal/DeleteModal";
 
-const SingleStudent = ({ item, setIsUpdated, setIsDeleted }) => {
+const SingleStudent = ({ student, setIsUpdated, setIsDeleted }) => {
     const [open, setOpen] = useState(false);
     const [dmopen, setDmOpen] = useState(false);
-    const { foodName, price } = item;
+    const { fullName, roll, age, hall, status } = student;
 
     return (
         <>
             <tr className="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100">
                 <td className="text-sm font-semibold tracking-wider ml-2 text-gray-900 px-6 py-4 whitespace-nowrap">
-                    {foodName}
+                    {fullName}
                 </td>
                 <td className="text-sm font-semibold tracking-wider ml-2 text-gray-900 px-6 py-4 whitespace-nowrap">
-                    Tk {price}
+                    {roll}
+                </td>
+                <td className="text-sm font-semibold tracking-wider ml-2 text-gray-900 px-6 py-4 whitespace-nowrap">
+                    {age}
+                </td>
+                <td className="text-sm font-semibold tracking-wider ml-2 text-gray-900 px-6 py-4 whitespace-nowrap">
+                    {student.class}
+                </td>
+                <td className="text-sm font-semibold tracking-wider ml-2 text-gray-900 px-6 py-4 whitespace-nowrap">
+                    {hall}
+                </td>
+                <td className="text-sm font-semibold tracking-wider ml-2 text-gray-900 px-6 py-4 whitespace-nowrap">
+                    {status}
                 </td>
                 <td
                     onClick={() => setOpen(true)}
@@ -33,13 +45,13 @@ const SingleStudent = ({ item, setIsUpdated, setIsDeleted }) => {
 
             {/*Edit Modal */}
             <StudentEditModal
-                item={item}
+                student={student}
                 setIsUpdated={setIsUpdated}
                 open={open}
                 setOpen={setOpen}
             ></StudentEditModal>
             <DeleteModal
-                item={item}
+                student={student}
                 setIsDeleted={setIsDeleted}
                 open={dmopen}
                 setOpen={setDmOpen}

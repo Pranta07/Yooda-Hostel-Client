@@ -61,7 +61,7 @@ const StudentsTable = ({ students, setIsUpdated, setIsDeleted }) => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {students.map((student) => (
+                                {students?.map((student) => (
                                     <SingleStudent
                                         key={student._id}
                                         student={student}
