@@ -14,8 +14,8 @@ const EditModal = ({ setIsUpdated, item, open, setOpen }) => {
     const onSubmit = (data) => {
         setIsUpdated(false);
         setOpen(false);
-        fetch(`http://localhost:5000/editItem/${item._id}`, {
-            method: "POST",
+        fetch(`http://localhost:5000/edit/${item._id}?type=food`, {
+            method: "PUT",
             headers: {
                 "content-type": "application/json",
             },

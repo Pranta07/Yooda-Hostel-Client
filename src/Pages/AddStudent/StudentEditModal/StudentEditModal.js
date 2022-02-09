@@ -5,16 +5,25 @@ import { useForm } from "react-hook-form";
 
 const StudentEditModal = ({ setIsUpdated, student, open, setOpen }) => {
     const cancelButtonRef = useRef(null);
+    const { fullName, roll, age, hall, status } = student;
 
     const { register, handleSubmit, reset } = useForm({
-        defaultValues: student,
+        defaultValues: {
+            fullName,
+            roll,
+            age,
+            class: student.class,
+            hall,
+            status,
+        },
     });
 
     const onSubmit = (data) => {
+        // console.log(data);
         setIsUpdated(false);
         setOpen(false);
-        fetch(`http://localhost:5000/editStudent/${student._id}`, {
-            method: "POST",
+        fetch(`http://localhost:5000/edit/${student._id}?type=student`, {
+            method: "PUT",
             headers: {
                 "content-type": "application/json",
             },
@@ -96,49 +105,147 @@ const StudentEditModal = ({ setIsUpdated, student, open, setOpen }) => {
                                                     onSubmit
                                                 )}
                                             >
-                                                <label className="block text-sm font-medium text-gray-700">
-                                                    Food Name{" "}
-                                                    <span className="text-red-600">
-                                                        *
-                                                    </span>
-                                                </label>
-                                                <input
-                                                    {...register("foodName", {
-                                                        required: true,
-                                                    })}
-                                                    className="my-1 p-2 border bg-gray-100 focus:outline-pink-500 block w-full shadow-md sm:text-sm rounded-md"
-                                                />
-                                                <label className="block text-sm font-medium text-gray-700 mt-5">
-                                                    Cost Price{" "}
-                                                    <span className="text-red-600">
-                                                        *
-                                                    </span>
-                                                </label>
-                                                <input
-                                                    {...register("price", {
-                                                        required: true,
-                                                    })}
-                                                    className="my-1 p-2 border bg-gray-100 focus:outline-pink-500 block w-full shadow-md sm:text-sm rounded-md"
-                                                />
+                                                <div className="overflow-hidden sm:rounded-md">
+                                                    <div className="px-4 py-5 bg-white sm:p-6">
+                                                        <div className="grid grid-cols-6 gap-6">
+                                                            <div className="col-span-6 sm:col-span-3">
+                                                                <label className="block text-sm font-medium text-gray-700">
+                                                                    Full name{" "}
+                                                                    <span className="text-red-600">
+                                                                        *
+                                                                    </span>
+                                                                </label>
+                                                                <input
+                                                                    {...register(
+                                                                        "fullName",
+                                                                        {
+                                                                            required: true,
+                                                                        }
+                                                                    )}
+                                                                    className="mt-1 p-2 border bg-gray-100 focus:outline-pink-500 block w-full shadow-md sm:text-sm rounded-md"
+                                                                />
+                                                            </div>
 
-                                                <div className="py-3 sm:flex sm:flex-row-reverse">
-                                                    <button
-                                                        type="submit"
-                                                        className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-pink-600 text-base font-medium text-white hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500 sm:ml-3 sm:w-auto sm:text-sm"
-                                                    >
-                                                        Save Changes
-                                                    </button>
-                                                    <button
-                                                        type="button"
-                                                        className="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
-                                                        onClick={() => {
-                                                            setOpen(false);
-                                                            reset();
-                                                        }}
-                                                        ref={cancelButtonRef}
-                                                    >
-                                                        Cancel
-                                                    </button>
+                                                            <div className="col-span-6 sm:col-span-3">
+                                                                <label className="block text-sm font-medium text-gray-700">
+                                                                    Roll{" "}
+                                                                    <span className="text-red-600">
+                                                                        *
+                                                                    </span>
+                                                                </label>
+                                                                <input
+                                                                    {...register(
+                                                                        "roll",
+                                                                        {
+                                                                            required: true,
+                                                                        }
+                                                                    )}
+                                                                    className="mt-1 p-2 border bg-gray-100 focus:outline-pink-500 block w-full shadow-md sm:text-sm rounded-md"
+                                                                />
+                                                            </div>
+
+                                                            <div className="col-span-6 sm:col-span-6 lg:col-span-2">
+                                                                <label className="block text-sm font-medium text-gray-700">
+                                                                    Age{" "}
+                                                                    <span className="text-red-600">
+                                                                        *
+                                                                    </span>
+                                                                </label>
+                                                                <input
+                                                                    {...register(
+                                                                        "age",
+                                                                        {
+                                                                            required: true,
+                                                                        }
+                                                                    )}
+                                                                    className="mt-1 p-2 border bg-gray-100 focus:outline-pink-500 block w-full shadow-md sm:text-sm rounded-md"
+                                                                />
+                                                            </div>
+
+                                                            <div className="col-span-6 sm:col-span-3 lg:col-span-2">
+                                                                <label className="block text-sm font-medium text-gray-700">
+                                                                    Class{" "}
+                                                                    <span className="text-red-600">
+                                                                        *
+                                                                    </span>
+                                                                </label>
+                                                                <input
+                                                                    {...register(
+                                                                        "class",
+                                                                        {
+                                                                            required: true,
+                                                                        }
+                                                                    )}
+                                                                    autoComplete="address-level1"
+                                                                    className="mt-1 p-2 border bg-gray-100 focus:outline-pink-500 block w-full shadow-md sm:text-sm rounded-md"
+                                                                />
+                                                            </div>
+
+                                                            <div className="col-span-6 sm:col-span-3 lg:col-span-2">
+                                                                <label className="block text-sm font-medium text-gray-700">
+                                                                    Hall Name{" "}
+                                                                    <span className="text-red-600">
+                                                                        *
+                                                                    </span>
+                                                                </label>
+                                                                <input
+                                                                    {...register(
+                                                                        "hall",
+                                                                        {
+                                                                            required: true,
+                                                                        }
+                                                                    )}
+                                                                    className="mt-1 p-2 border bg-gray-100 focus:outline-pink-500 block w-full shadow-md sm:text-sm rounded-md"
+                                                                />
+                                                            </div>
+
+                                                            <div className="col-span-6 sm:col-span-3">
+                                                                <label className="block text-sm font-medium text-gray-700">
+                                                                    Status{" "}
+                                                                    <span className="text-red-600">
+                                                                        *
+                                                                    </span>
+                                                                </label>
+                                                                <select
+                                                                    {...register(
+                                                                        "status",
+                                                                        {
+                                                                            required: true,
+                                                                        }
+                                                                    )}
+                                                                    className="mt-1 block w-full py-2 px-3 border bg-gray-100 focus:outline-pink-500 rounded-md shadow-sm sm:text-sm"
+                                                                >
+                                                                    <option value="active">
+                                                                        Active
+                                                                    </option>
+                                                                    <option value="inActive">
+                                                                        InActive
+                                                                    </option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div className="py-3 sm:flex sm:flex-row-reverse">
+                                                        <button
+                                                            type="submit"
+                                                            className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-pink-600 text-base font-medium text-white hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500 sm:ml-3 sm:w-auto sm:text-sm"
+                                                        >
+                                                            Save Changes
+                                                        </button>
+                                                        <button
+                                                            type="button"
+                                                            className="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
+                                                            onClick={() => {
+                                                                setOpen(false);
+                                                                reset();
+                                                            }}
+                                                            ref={
+                                                                cancelButtonRef
+                                                            }
+                                                        >
+                                                            Cancel
+                                                        </button>
+                                                    </div>
                                                 </div>
                                             </form>
                                         </div>
