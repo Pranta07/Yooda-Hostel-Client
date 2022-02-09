@@ -2,12 +2,12 @@ import React, { Fragment, useRef } from "react";
 import { TrashIcon } from "@heroicons/react/outline";
 import { Dialog, Transition } from "@headlessui/react";
 
-const DeleteModal = ({ item, setIsDeleted, open, setOpen }) => {
+const DeleteModal = ({ id, type, setIsDeleted, open, setOpen }) => {
     const cancelButtonRef = useRef(null);
 
     const handleDelete = () => {
         setIsDeleted(false);
-        fetch(`http://localhost:5000/deleteItem/${item._id}`, {
+        fetch(`http://localhost:5000/delete/${id}?type=${type}`, {
             method: "DELETE",
         })
             .then((res) => res.json())

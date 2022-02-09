@@ -39,7 +39,8 @@ const SingleItem = ({ item, setIsUpdated, setIsDeleted }) => {
                 setOpen={setOpen}
             ></EditModal>
             <DeleteModal
-                item={item}
+                type="food"
+                id={item._id}
                 setIsDeleted={setIsDeleted}
                 open={dmopen}
                 setOpen={setDmOpen}

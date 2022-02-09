@@ -10,7 +10,7 @@ const SingleStudent = ({ student, setIsUpdated, setIsDeleted }) => {
 
     return (
         <>
-            <tr className="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100">
+            <tr className="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100 text-left">
                 <td className="text-sm font-semibold tracking-wider ml-2 text-gray-900 px-6 py-4 whitespace-nowrap">
                     {fullName}
                 </td>
@@ -51,7 +51,8 @@ const SingleStudent = ({ student, setIsUpdated, setIsDeleted }) => {
                 setOpen={setOpen}
             ></StudentEditModal>
             <DeleteModal
-                student={student}
+                id={student._id}
+                type="student"
                 setIsDeleted={setIsDeleted}
                 open={dmopen}
                 setOpen={setDmOpen}
