@@ -8,9 +8,16 @@ const SingleStudent = ({ student, setIsUpdated, setIsDeleted }) => {
     const [dmopen, setDmOpen] = useState(false);
     const { fullName, roll, age, hall, status } = student;
 
+    const handleSelect = () => {
+        console.log(student.roll);
+    };
+
     return (
         <>
             <tr className="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100 text-left">
+                <td className="ml-2 px-6 py-4">
+                    <input type="checkbox" onSelect={handleSelect} />
+                </td>
                 <td className="text-sm font-semibold tracking-wider ml-2 text-gray-900 px-6 py-4 whitespace-nowrap">
                     {fullName}
                 </td>

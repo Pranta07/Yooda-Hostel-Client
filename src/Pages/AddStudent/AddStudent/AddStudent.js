@@ -191,7 +191,7 @@ const AddStudent = () => {
                             setIsDeleted={setIsDeleted}
                         ></StudentsTable>
                         {/* pagination */}
-                        <div className="my-2 flex justify-center">
+                        <div className="mt-4 mb-10 flex justify-center">
                             <nav
                                 className="relative z-0 inline-flex rounded-md shadow-sm -space-x-px"
                                 aria-label="Pagination"
