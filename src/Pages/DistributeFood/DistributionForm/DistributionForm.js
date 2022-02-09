@@ -8,8 +8,25 @@ const DistributionForm = ({ roll }) => {
     const onSubmit = (data) => {
         if (roll) {
             data.studentId = roll;
-            data.items = selectedItems;
-            console.log(data);
+            data.foodItemList = selectedItems;
+            data.status = "served";
+            // console.log(data);
+            fetch("http://localhost:5000/disFood", {
+                method: "POST",
+                headers: {
+                    "content-type": "application/json",
+                },
+                body: JSON.stringify(data),
+            })
+                .then((res) => res.json())
+                .then((result) => {
+                    if (result.insertedId) {
+                        alert("Served Foods Successfully!");
+                        reset();
+                    } else {
+                        alert("Already Served!");
+                    }
+                });
         } else {
             alert("Search for a valid student id!");
         }
@@ -62,7 +79,7 @@ const DistributionForm = ({ roll }) => {
                             </div>
                         </div>
                     </div>
-                    <div className="px-4 py-3 bg-gray-50 text-right sm:px-6 rounded-md shadow-lg">
+                    <div className="px-4 py-2 bg-white text-right sm:px-6 rounded-md shadow-lg">
                         <button
                             type="submit"
                             className="uppercase bg-pink-500 text-white tracking-wider px-8 py-3 my-4 hover:bg-gray-900 cursor-pointer"
