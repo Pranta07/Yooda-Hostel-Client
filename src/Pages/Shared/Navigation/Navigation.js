@@ -32,8 +32,8 @@ const Navigation = () => {
                                 <div className="flex items-center justify-between h-16">
                                     <div className="flex items-center">
                                         <div className="flex items-center gap-3">
-                                            <span class="before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-pink-500 relative inline-block">
-                                                <span class="relative text-white">
+                                            <span className="before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-pink-500 relative inline-block">
+                                                <span className="relative text-white">
                                                     Yooda
                                                 </span>
                                             </span>
