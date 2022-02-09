@@ -1,4 +1,3 @@
-import { ExclamationCircleIcon } from "@heroicons/react/outline";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 
@@ -16,7 +15,7 @@ const AddStudent = () => {
     const onSubmit = (data) => {
         console.log(data);
         setIsAdded(false);
-        fetch("http://localhost:5000/addFood", {
+        fetch("http://localhost:5000/addStudent", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -26,7 +25,7 @@ const AddStudent = () => {
             .then((res) => res.json())
             .then((result) => {
                 if (result.insertedId) {
-                    alert("Food Item Added!");
+                    alert("New Student Enrolled!");
                     setIsAdded(true);
                     reset();
                 } else {
