@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { PencilAltIcon, TrashIcon } from "@heroicons/react/outline";
 import EditModal from "../EditModal/EditModal";
+import DeleteModal from "../DeleteModal/DeleteModal";
 
-const SingleItem = ({ item, setIsUpdated }) => {
+const SingleItem = ({ item, setIsUpdated, setIsDeleted }) => {
     const [open, setOpen] = useState(false);
+    const [dmopen, setDmOpen] = useState(false);
     const { foodName, price } = item;
-
-    const handleDelete = () => {};
 
     return (
         <>
@@ -24,7 +24,7 @@ const SingleItem = ({ item, setIsUpdated }) => {
                     <PencilAltIcon className="inline h-5 w-5"></PencilAltIcon>
                 </td>
                 <td
-                    onClick={handleDelete}
+                    onClick={() => setDmOpen(true)}
                     className="text-sm font-semibold tracking-wider ml-2 text-gray-900 px-6 py-4 whitespace-nowrap hover:text-red-600"
                 >
                     <TrashIcon className="inline h-5 w-5"></TrashIcon>
@@ -38,6 +38,12 @@ const SingleItem = ({ item, setIsUpdated }) => {
                 open={open}
                 setOpen={setOpen}
             ></EditModal>
+            <DeleteModal
+                item={item}
+                setIsDeleted={setIsDeleted}
+                open={dmopen}
+                setOpen={setDmOpen}
+            ></DeleteModal>
         </>
     );
 };

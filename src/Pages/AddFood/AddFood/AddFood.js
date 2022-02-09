@@ -12,6 +12,7 @@ const AddFood = () => {
     const [loading, setLoading] = useState(true);
     const [isAdded, setIsAdded] = useState(false);
     const [isUpdated, setIsUpdated] = useState(false);
+    const [isDeleted, setIsDeleted] = useState(false);
     const [pageNum, setPageNum] = useState(0);
     const [pageCount, setPageCount] = useState(0);
 
@@ -53,7 +54,7 @@ const AddFood = () => {
                 setPageCount(Math.ceil(data.count / 5));
                 setFoodItems(data.foods);
             });
-    }, [isAdded, isUpdated, pageNum]);
+    }, [isAdded, isUpdated, isDeleted, pageNum]);
 
     return (
         <div className="container mx-auto text-left grid grid-cols-1 lg:grid-cols-2 gap-4">
@@ -125,6 +126,7 @@ const AddFood = () => {
                         <FoodItemTable
                             foods={foodItems}
                             setIsUpdated={setIsUpdated}
+                            setIsDeleted={setIsDeleted}
                         ></FoodItemTable>
                         {/* pagination */}
                         <div className="my-2 flex justify-center">

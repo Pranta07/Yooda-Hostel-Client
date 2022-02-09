@@ -1,7 +1,7 @@
 import React from "react";
 import SingleItem from "../SingleItem/SingleItem";
 
-const FoodItemTable = ({ foods, setIsUpdated }) => {
+const FoodItemTable = ({ foods, setIsUpdated, setIsDeleted }) => {
     return (
         <div className="flex flex-col overflow-x-scroll">
             <div className="mx-2">
@@ -42,6 +42,7 @@ const FoodItemTable = ({ foods, setIsUpdated }) => {
                                         key={item._id}
                                         item={item}
                                         setIsUpdated={setIsUpdated}
+                                        setIsDeleted={setIsDeleted}
                                     ></SingleItem>
                                 ))}
                             </tbody>
