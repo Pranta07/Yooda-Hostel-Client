@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import DistributionForm from "../DistributionForm/DistributionForm";
 import SearchStudent from "../SearchStudent/SearchStudent";
 import StudentProfile from "../StudentProfile/StudentProfile";
 
@@ -28,6 +29,7 @@ const DistributeFood = () => {
                         setRoll={setRoll}
                         handleSearch={handleSearch}
                     ></SearchStudent>
+                    <DistributionForm roll={roll}></DistributionForm>
                 </div>
                 {!student && !loading && (
                     <p className="text-md font-semibold tracking-widest">
