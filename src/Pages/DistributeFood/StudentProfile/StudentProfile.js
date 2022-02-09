@@ -9,7 +9,7 @@ const StudentProfile = ({ student }) => {
                 Student Profile
             </h1>
 
-            <div className="relative mx-20 mt-4 shadow-md p-6 bg-gray-50 rounded-lg">
+            <div className="relative mx-10 lg:mx-20 my-4 shadow-md p-6 bg-gray-50 rounded-lg">
                 {status === "active" && (
                     <span className="flex h-4 w-4">
                         <span className="animate-ping absolute inline-flex h-4 w-4 top-0 right-0 rounded-full bg-green-300 opacity-75"></span>
