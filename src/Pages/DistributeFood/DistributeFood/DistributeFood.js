@@ -5,11 +5,14 @@ import StudentProfile from "../StudentProfile/StudentProfile";
 const DistributeFood = () => {
     const [roll, setRoll] = useState("");
     const [student, setStudent] = useState({});
+    const [loading, setLoading] = useState(true);
 
     const handleSearch = () => {
+        setLoading(true);
         fetch(`http://localhost:5000/student/${roll}`)
             .then((res) => res.json())
-            .then((data) => setStudent(data));
+            .then((data) => setStudent(data))
+            .finally(() => setLoading(false));
     };
 
     return (
@@ -22,7 +25,15 @@ const DistributeFood = () => {
                     setRoll={setRoll}
                     handleSearch={handleSearch}
                 ></SearchStudent>
-                <StudentProfile student={student}></StudentProfile>
+                {!loading && (
+                    <StudentProfile student={student}></StudentProfile>
+                )}
+                {loading && (
+                    <svg
+                        class="animate-spin h-5 w-5 bg-pink-300 mx-auto"
+                        viewBox="0 0 24 24"
+                    ></svg>
+                )}
             </div>
         </div>
     );
