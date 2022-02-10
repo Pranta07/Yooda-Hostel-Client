@@ -22,13 +22,16 @@ const StudentEditModal = ({ setIsUpdated, student, open, setOpen }) => {
         // console.log(data);
         setIsUpdated(false);
         setOpen(false);
-        fetch(`http://localhost:5000/edit/${student._id}?type=student`, {
-            method: "PUT",
-            headers: {
-                "content-type": "application/json",
-            },
-            body: JSON.stringify(data),
-        })
+        fetch(
+            `https://limitless-caverns-76166.herokuapp.com/edit/${student._id}?type=student`,
+            {
+                method: "PUT",
+                headers: {
+                    "content-type": "application/json",
+                },
+                body: JSON.stringify(data),
+            }
+        )
             .then((res) => res.json())
             .then((result) => {
                 if (result.modifiedCount) {

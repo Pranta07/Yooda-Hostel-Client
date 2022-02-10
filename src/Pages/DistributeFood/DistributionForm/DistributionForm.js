@@ -11,7 +11,7 @@ const DistributionForm = ({ roll }) => {
             data.foodItemList = selectedItems;
             data.status = "served";
             // console.log(data);
-            fetch("http://localhost:5000/disFood", {
+            fetch("https://limitless-caverns-76166.herokuapp.com/disFood", {
                 method: "POST",
                 headers: {
                     "content-type": "application/json",

@@ -7,9 +7,12 @@ const DeleteModal = ({ id, type, setIsDeleted, open, setOpen }) => {
 
     const handleDelete = () => {
         setIsDeleted(false);
-        fetch(`http://localhost:5000/delete/${id}?type=${type}`, {
-            method: "DELETE",
-        })
+        fetch(
+            `https://limitless-caverns-76166.herokuapp.com/delete/${id}?type=${type}`,
+            {
+                method: "DELETE",
+            }
+        )
             .then((res) => res.json())
             .then((result) => {
                 if (result.deletedCount) {

@@ -9,13 +9,16 @@ const StudentsTable = ({ students, setIsUpdated, setIsDeleted }) => {
     const handleStatus = (status) => {
         // console.log(selectedItems);
         setIsUpdated(false);
-        fetch(`http://localhost:5000/students/update/${status}`, {
-            method: "PUT",
-            headers: {
-                "content-type": "application/json",
-            },
-            body: JSON.stringify(selectedItems),
-        })
+        fetch(
+            `https://limitless-caverns-76166.herokuapp.com/students/update/${status}`,
+            {
+                method: "PUT",
+                headers: {
+                    "content-type": "application/json",
+                },
+                body: JSON.stringify(selectedItems),
+            }
+        )
             .then((res) => res.json())
             .then((result) => {
                 if (result.modifiedCount > 0) {

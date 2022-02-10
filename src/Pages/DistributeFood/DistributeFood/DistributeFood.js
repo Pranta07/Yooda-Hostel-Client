@@ -11,7 +11,9 @@ const DistributeFood = () => {
     const handleSearch = () => {
         if (roll) {
             setLoading(true);
-            fetch(`http://localhost:5000/student/${roll}`)
+            fetch(
+                `https://limitless-caverns-76166.herokuapp.com/student/${roll}`
+            )
                 .then((res) => res.json())
                 .then((data) => {
                     setStudent(data);

@@ -25,7 +25,7 @@ const AddFood = () => {
     const onSubmit = (data) => {
         // console.log(data);
         setIsAdded(false);
-        fetch("http://localhost:5000/addFood", {
+        fetch("https://limitless-caverns-76166.herokuapp.com/addFood", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -45,7 +45,9 @@ const AddFood = () => {
     };
 
     useEffect(() => {
-        fetch(`http://localhost:5000/foods?page=${pageNum}`)
+        fetch(
+            `https://limitless-caverns-76166.herokuapp.com/foods?page=${pageNum}`
+        )
             .then((res) => res.json())
             .then((data) => {
                 setPageCount(Math.ceil(data.count / 5));

@@ -14,13 +14,16 @@ const EditModal = ({ setIsUpdated, item, open, setOpen }) => {
     const onSubmit = (data) => {
         setIsUpdated(false);
         setOpen(false);
-        fetch(`http://localhost:5000/edit/${item._id}?type=food`, {
-            method: "PUT",
-            headers: {
-                "content-type": "application/json",
-            },
-            body: JSON.stringify(data),
-        })
+        fetch(
+            `https://limitless-caverns-76166.herokuapp.com/edit/${item._id}?type=food`,
+            {
+                method: "PUT",
+                headers: {
+                    "content-type": "application/json",
+                },
+                body: JSON.stringify(data),
+            }
+        )
             .then((res) => res.json())
             .then((result) => {
                 if (result.modifiedCount) {

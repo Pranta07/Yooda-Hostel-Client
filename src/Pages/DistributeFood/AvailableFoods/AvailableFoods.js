@@ -4,7 +4,7 @@ const AvailableFoods = ({ selectedItems, setSelectedItems }) => {
     const [foodItems, setFoodItems] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/allFoods`)
+        fetch(`https://limitless-caverns-76166.herokuapp.com/allFoods`)
             .then((res) => res.json())
             .then((data) => {
                 setFoodItems(data);

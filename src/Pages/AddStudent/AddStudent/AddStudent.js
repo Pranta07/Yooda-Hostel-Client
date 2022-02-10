@@ -15,7 +15,7 @@ const AddStudent = () => {
 
     const onSubmit = (data) => {
         setIsAdded(false);
-        fetch("http://localhost:5000/addStudent", {
+        fetch("https://limitless-caverns-76166.herokuapp.com/addStudent", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -35,7 +35,9 @@ const AddStudent = () => {
     };
 
     useEffect(() => {
-        fetch(`http://localhost:5000/students?page=${pageNum}`)
+        fetch(
+            `https://limitless-caverns-76166.herokuapp.com/students?page=${pageNum}`
+        )
             .then((res) => res.json())
             .then((data) => {
                 setPageCount(Math.ceil(data.count / 5));
