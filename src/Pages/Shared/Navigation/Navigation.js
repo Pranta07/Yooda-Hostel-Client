@@ -31,7 +31,7 @@ const Navigation = () => {
                             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                                 <div className="flex items-center justify-between h-16">
                                     <div className="flex items-center">
-                                        <div className="flex items-center gap-3">
+                                        <div className="flex items-center gap-3 font-semibold tracking-widest">
                                             <span className="before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-pink-500 relative inline-block">
                                                 <span className="relative text-white">
                                                     Yooda
@@ -53,7 +53,7 @@ const Navigation = () => {
                                                                 item.current
                                                                     ? "bg-gray-600 text-white"
                                                                     : "text-white hover:bg-gray-600",
-                                                                "px-3 py-2 rounded-md text-sm font-medium"
+                                                                "px-3 py-2 rounded-md text-sm font-semibold tracking-widest"
                                                             )}
                                                             aria-current={
                                                                 item.current
@@ -68,6 +68,7 @@ const Navigation = () => {
                                             </div>
                                         </div>
                                     </div>
+
                                     <div className="hidden md:block">
                                         <div className="ml-4 flex items-center md:ml-6">
                                             {/* Profile dropdown */}
