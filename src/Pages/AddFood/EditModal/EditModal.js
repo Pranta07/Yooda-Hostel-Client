@@ -38,7 +38,7 @@ const EditModal = ({ setIsUpdated, item, open, setOpen }) => {
                 } else {
                     Swal.fire({
                         title: "Warning!",
-                        text: "Try Again! Something Went Wrong!",
+                        text: "Already Updated!",
                         icon: "warning",
                         timer: 2000,
                     });
