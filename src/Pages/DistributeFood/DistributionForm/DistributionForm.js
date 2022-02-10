@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
 import AvailableFoods from "../AvailableFoods/AvailableFoods";
 
 const DistributionForm = ({ roll }) => {
@@ -21,14 +22,29 @@ const DistributionForm = ({ roll }) => {
                 .then((res) => res.json())
                 .then((result) => {
                     if (result.insertedId) {
-                        alert("Served Foods Successfully!");
+                        Swal.fire({
+                            title: "Well done!",
+                            text: "Served Foods Successfully!",
+                            icon: "success",
+                            timer: 1500,
+                        });
                         reset();
                     } else {
-                        alert(result.msg);
+                        Swal.fire({
+                            title: "Warning!",
+                            text: result.msg,
+                            icon: "warning",
+                            timer: 2000,
+                        });
                     }
                 });
         } else {
-            alert("Search for a valid student id!");
+            Swal.fire({
+                title: "Warning!",
+                text: "Search for a valid student id!",
+                icon: "warning",
+                timer: 2000,
+            });
         }
     };
 

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Swal from "sweetalert2";
 import DistributionForm from "../DistributionForm/DistributionForm";
 import SearchStudent from "../SearchStudent/SearchStudent";
 import StudentProfile from "../StudentProfile/StudentProfile";
@@ -19,6 +20,13 @@ const DistributeFood = () => {
                     setStudent(data);
                 })
                 .finally(() => setLoading(false));
+        } else {
+            Swal.fire({
+                title: "Warning!",
+                text: "Search for a valid student id!",
+                icon: "warning",
+                timer: 2000,
+            });
         }
     };
 
