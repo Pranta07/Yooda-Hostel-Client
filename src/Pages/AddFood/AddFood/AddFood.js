@@ -6,6 +6,7 @@ import {
     ExclamationCircleIcon,
 } from "@heroicons/react/outline";
 import FoodItemTable from "../FoodItemTable/FoodItemTable";
+import Swal from "sweetalert2";
 
 const AddFood = () => {
     const [foodItems, setFoodItems] = useState([]);
@@ -35,11 +36,21 @@ const AddFood = () => {
             .then((res) => res.json())
             .then((result) => {
                 if (result.insertedId) {
-                    alert("Food Item Added!");
+                    Swal.fire({
+                        title: "Well done!",
+                        text: "New Food Item Added!",
+                        icon: "success",
+                        timer: 1500,
+                    });
                     setIsAdded(true);
                     reset();
                 } else {
-                    alert("Try Again! Something Went Wrong!");
+                    Swal.fire({
+                        title: "Warning!",
+                        text: "Try Again! Something Went Wrong!",
+                        icon: "warning",
+                        timer: 2000,
+                    });
                 }
             });
     };
