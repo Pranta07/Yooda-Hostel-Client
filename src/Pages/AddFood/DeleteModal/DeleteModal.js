@@ -1,6 +1,7 @@
 import React, { Fragment, useRef } from "react";
 import { TrashIcon } from "@heroicons/react/outline";
 import { Dialog, Transition } from "@headlessui/react";
+import Swal from "sweetalert2";
 
 const DeleteModal = ({ id, type, setIsDeleted, open, setOpen }) => {
     const cancelButtonRef = useRef(null);
@@ -16,10 +17,20 @@ const DeleteModal = ({ id, type, setIsDeleted, open, setOpen }) => {
             .then((res) => res.json())
             .then((result) => {
                 if (result.deletedCount) {
-                    alert("Deleted Successfully!");
+                    Swal.fire({
+                        title: "Well done!",
+                        text: "Deleted Successfully!",
+                        icon: "success",
+                        timer: 1500,
+                    });
                     setIsDeleted(true);
                 } else {
-                    alert("Try Again!");
+                    Swal.fire({
+                        title: "Warning!",
+                        text: "Try Again! Something Went Wrong!",
+                        icon: "warning",
+                        timer: 2000,
+                    });
                 }
             });
     };

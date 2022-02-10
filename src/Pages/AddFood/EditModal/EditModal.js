@@ -2,6 +2,7 @@ import React, { Fragment, useRef } from "react";
 import { PencilIcon } from "@heroicons/react/outline";
 import { Dialog, Transition } from "@headlessui/react";
 import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
 
 const EditModal = ({ setIsUpdated, item, open, setOpen }) => {
     const { foodName, price } = item;
@@ -27,10 +28,20 @@ const EditModal = ({ setIsUpdated, item, open, setOpen }) => {
             .then((res) => res.json())
             .then((result) => {
                 if (result.modifiedCount) {
-                    alert("Food Item Info Updated!");
+                    Swal.fire({
+                        title: "Great!",
+                        text: "Food Item Info Updated!",
+                        icon: "success",
+                        timer: 1500,
+                    });
                     setIsUpdated(true);
                 } else {
-                    alert("Try Again!");
+                    Swal.fire({
+                        title: "Warning!",
+                        text: "Try Again! Something Went Wrong!",
+                        icon: "warning",
+                        timer: 2000,
+                    });
                 }
             });
     };
