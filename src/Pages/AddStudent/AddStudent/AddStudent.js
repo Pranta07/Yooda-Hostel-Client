@@ -1,6 +1,7 @@
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/outline";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
 import StudentsTable from "../StudentsTable/StudentsTable";
 
 const AddStudent = () => {
@@ -25,11 +26,21 @@ const AddStudent = () => {
             .then((res) => res.json())
             .then((result) => {
                 if (result.insertedId) {
-                    alert("New Student Enrolled!");
+                    Swal.fire({
+                        title: "Well done!",
+                        text: "New Student Enrolled!",
+                        icon: "success",
+                        timer: 1500,
+                    });
                     setIsAdded(true);
                     reset();
                 } else {
-                    alert("Try Again! Something Went Wrong!");
+                    Swal.fire({
+                        title: "Warning!",
+                        text: "Try Again! Something Went Wrong!",
+                        icon: "warning",
+                        timer: 2000,
+                    });
                 }
             });
     };

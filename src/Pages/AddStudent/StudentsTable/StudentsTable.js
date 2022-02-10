@@ -1,6 +1,7 @@
 import { Menu, Transition } from "@headlessui/react";
 import { CheckIcon, DotsVerticalIcon } from "@heroicons/react/outline";
 import React, { Fragment, useState } from "react";
+import Swal from "sweetalert2";
 import SingleStudent from "../SingleStudent/SingleStudent";
 
 const StudentsTable = ({ students, setIsUpdated, setIsDeleted }) => {
@@ -22,10 +23,20 @@ const StudentsTable = ({ students, setIsUpdated, setIsDeleted }) => {
             .then((res) => res.json())
             .then((result) => {
                 if (result.modifiedCount > 0) {
-                    alert("Status Updated Successfully!");
+                    Swal.fire({
+                        title: "Well done!",
+                        text: "Status Updated Successfully!",
+                        icon: "success",
+                        timer: 1500,
+                    });
                     setIsUpdated(true);
                 } else {
-                    alert("Try Again!");
+                    Swal.fire({
+                        title: "Warning!",
+                        text: "Already up to date!",
+                        icon: "warning",
+                        timer: 2000,
+                    });
                 }
             });
     };

@@ -2,6 +2,7 @@ import React, { Fragment, useRef } from "react";
 import { PencilIcon } from "@heroicons/react/outline";
 import { Dialog, Transition } from "@headlessui/react";
 import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
 
 const StudentEditModal = ({ setIsUpdated, student, open, setOpen }) => {
     const cancelButtonRef = useRef(null);
@@ -35,10 +36,20 @@ const StudentEditModal = ({ setIsUpdated, student, open, setOpen }) => {
             .then((res) => res.json())
             .then((result) => {
                 if (result.modifiedCount) {
-                    alert("Student Info Updated!");
+                    Swal.fire({
+                        title: "Well done!",
+                        text: "Student Information Updated Successfully!",
+                        icon: "success",
+                        timer: 1500,
+                    });
                     setIsUpdated(true);
                 } else {
-                    alert("Try Again!");
+                    Swal.fire({
+                        title: "Warning!",
+                        text: "Already up to date!",
+                        icon: "warning",
+                        timer: 2000,
+                    });
                 }
             });
     };
